@@ -2,9 +2,9 @@
 
 ## Introduction
 
-The SWN Toolbox is a collection of Ruby scripts designed to speed up random
-generation of various Stars Without Number things. It is aimed primarily
-at Game Masters.
+The SWN Toolbox is a collection of [Ruby](https://www.ruby-lang.org) scripts
+designed to speed up random generation of various Stars Without Number things.
+It is aimed primarily at Game Masters.
 
 The scripts are written in Ruby; you'll need an installation of Ruby on your
 system to run them. A Windows Ruby installer is available at 
@@ -15,7 +15,7 @@ The SWN Toolbox is [hosted on GitHub](https://github.com/orffen/swn).
 ## Installation
 
 No installation is required; simply extract the file into a folder of your
-choice. The .rb files can be run directly from the command-line:
+choice. The .rb files can be run directly from the command-line, e.g.:
 
 - ruby alien.rb
 
