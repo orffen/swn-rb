@@ -3,7 +3,7 @@
 # npc.rb
 # SWN NPC Generator
 #
-# Copyright (C) 2014 Steve Simenic <orffen@orffenspace.com>
+# Copyright (c) 2014 Steve Simenic <orffen@orffenspace.com>
 #
 # This file is part of the SWN Toolbox.
 #
