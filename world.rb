@@ -51,9 +51,7 @@ class World
     @population  = json['population'].sample
     @tech_level  = json['tech_level'].sample
     @tags = []
-    while tags.length < 2
-      tags.push json['tags'].sample
-    end
+    2.times { tags.push json['tags'].sample }
   end
 
   def to_s
@@ -71,10 +69,10 @@ end
 
 if __FILE__ == $0
   number = (ARGV.shift || 1).to_i
-  (1..number).each do |e|
+  number.times do |e|
     puts World.new
     if number > 1
-      puts '-----------+-+-+-----------' unless e == number
+      puts '-----------+-+-+-----------' unless e + 1 == number
     end
   end
 end

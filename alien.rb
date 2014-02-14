@@ -43,7 +43,7 @@ class Alien
     @body_type        = json['body_type'].sample
     @social_structure = json['social_structure'].sample
     @lenses           = []
-    (1..[2, 2, 3, 4].sample).each { |e| @lenses.push(json['lens'].sample) }
+    [1, 2, 2, 3, 4].sample.times { @lenses.push(json['lens'].sample) }
   end
 
   def to_s
@@ -58,10 +58,10 @@ end
 
 if __FILE__ == $0
   number = (ARGV.shift || 1).to_i
-  (1..number).each do |e|
+  number.times do |e|
     puts Alien.new
     if number > 1
-      puts '-----------+-+-+-----------' unless e == number
+      puts '-----------+-+-+-----------' unless e + 1 == number
     end
   end
 end

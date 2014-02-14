@@ -46,10 +46,10 @@ end
 
 if __FILE__ == $0
   number = (ARGV.shift || 1).to_i
-  (1..number).each do |e|
+  number.times do |e|
     puts Room.new
     if number > 1
-      puts '-----------+-+-+-----------' unless e == number
+      puts '-----------+-+-+-----------' unless e + 1 == number
     end
   end
 end

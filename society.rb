@@ -49,9 +49,7 @@ class Society
     govt = @initial_government_type.downcase.split.join("_")
     @evolution = json['evolution'][govt].sample
     @traits = []
-    while traits.length < [2, 3].sample
-      @traits.push json['trait'].sample
-    end
+    [2, 3].sample.times { @traits.push json['trait'].sample }
     #TODO: Add a government_type attribute based on the evolution (probably need a regex)
   end
 
@@ -69,10 +67,10 @@ end
 
 if __FILE__ == $0
   number = (ARGV.shift || 1).to_i
-  (1..number).each do |e|
+  number.times do |e|
     puts Society.new
     if number > 1
-      puts '-----------+-+-+-----------' unless e == number
+      puts '-----------+-+-+-----------' unless e + 1 == number
     end
   end
 end
