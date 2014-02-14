@@ -6,12 +6,12 @@
 	},
 	"major": {
 		"stats": [6, 5, 3],
-		"assets": [2, 4],
+		"assets": [2, 2],
 		"hit_points": 29
 	},
 	"hegemon": {
 		"stats": [8, 7, 5],
-		"assets": [4, 8],
+		"assets": [4, 4],
 		"hit_points": 49
 	},
 	"tags": [

@@ -51,13 +51,9 @@ class Faction
     @cunning    = stats.delete stats.sample
     @wealth     = stats.delete stats.sample
 
-    # generate tags
     @tags = []
-    while @tags.length < ([1] * 4 + [2]).sample do # 2 tags are rare!
-      @tags.push json['tags'].sample
-    end
+    ([1] * 4 + [2]).sample.times { @tags.push json['tags'].sample }
 
-    # generate assets
     @assets = []
     # now grab the highest stat value from 'stats'[0] in json
     bigstat = [@force, @cunning, @wealth].index json[@type]['stats'][0]
@@ -66,12 +62,12 @@ class Faction
       1 => ['cunning', @cunning],
       2 => ['wealth', @wealth]
     }
-    while @assets.length < json[@type]['assets'][0]
+    json[@type]['assets'][0].times do
       number = (1..stats[bigstat][1]).to_a.sample.to_s # json stores as string
       @assets.push "#{(json[stats[bigstat][0]][number]).sample}/" +
                    "#{stats[bigstat][0].capitalize} #{number}"
     end
-    while @assets.length < json[@type]['assets'][1] # [1] is the total number
+    json[@type]['assets'][1].times do
       stat = ([0, 1, 2] - [bigstat]).sample # exclude biggest stat
       number = (1..stats[stat][1]).to_a.sample.to_s # json stores as string
       @assets.push "#{(json[stats[stat][0]][number]).sample}/" +
