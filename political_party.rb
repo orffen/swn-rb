@@ -44,6 +44,8 @@ class PoliticalParty
     @leadership       = json['leadership'].sample
     @economic_policy  = json['economic_policy'].sample
     @important_issues = json['important_issues'].sample
+    #TODO: Change the following so that when (A metal) or (A color)
+    # it actually returns a metal or a color
     @name = "#{json['descriptor'].sample} #{json['name'].sample}"
   end
 
@@ -59,11 +61,8 @@ end
 
 
 if __FILE__ == $0
-  number = (ARGV.shift || 1).to_i
-  number.times do |e|
+  (ARGV.shift || 1).to_i.times do |e|
+    puts '-----------+-+-+-----------' unless e == 0
     puts PoliticalParty.new
-    if number > 1
-      puts '-----------+-+-+-----------' unless e + 1 == number
-    end
   end
 end

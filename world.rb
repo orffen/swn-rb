@@ -68,11 +68,8 @@ end
 
 
 if __FILE__ == $0
-  number = (ARGV.shift || 1).to_i
-  number.times do |e|
+  (ARGV.shift || 1).to_i.times do |e|
+    puts '-----------+-+-+-----------' unless e == 0
     puts World.new
-    if number > 1
-      puts '-----------+-+-+-----------' unless e + 1 == number
-    end
   end
 end
