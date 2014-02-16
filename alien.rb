@@ -32,25 +32,26 @@ require './unindent'
 # This class generates an alien race from tables/alien.json, 
 # which has the following attributes:
 #
-# body_type
-# social_structure
-# lenses
+# - body_type (string)
+# - social_structure (string)
+# - lenses (array)
+#
 class Alien
   attr_reader :body_type, :social_structure, :lenses
 
   def initialize
     json = JSON.parse(File.read('tables/alien.json'))
-    @body_type        = json['body_type'].sample
-    @social_structure = json['social_structure'].sample
+    @body_type        = json['body_type'].sample.to_s
+    @social_structure = json['social_structure'].sample.to_s
     @lenses           = []
-    [1, 2, 2, 3, 4].sample.times { @lenses.push(json['lens'].sample) }
+    [1, 2, 2, 3, 4].sample.times { @lenses.push(json['lens'].sample.to_s) }
   end
 
   def to_s
     <<-EOS.unindent
-      Body Type: #{@body_type}
-      Social Structure: #{@social_structure}
-      Lenses: #{@lenses.join(', ')}
+      |Body Type: #{@body_type}
+      |Social Structure: #{@social_structure}
+      |Lenses: #{@lenses.join(', ')}
       EOS
   end
 end
@@ -58,7 +59,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Alien.new
   end
 end

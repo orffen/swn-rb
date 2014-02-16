@@ -32,34 +32,35 @@ require './unindent'
 # This class generates a society from tables/society.json, 
 # which has the following attributes:
 #
-# colonization_reason
-# initial_government_type
-# traits
-# conflict
-# evolution
+# - colonization_reason (string)
+# - initial_government_type (string)
+# - traits (array)
+# - conflict (string)
+# - evolution (string)
+#
 class Society
   attr_reader :colonization_reason, :initial_government_type, :traits,
     :conflict, :evolution
 
   def initialize
     json = JSON.parse(File.read('tables/society.json'))
-    @colonization_reason     = json['colonization_reason'].sample
-    @initial_government_type = json['government_type'].sample
-    @conflict                = json['conflict'].sample
+    @colonization_reason     = json['colonization_reason'].sample.to_s
+    @initial_government_type = json['government_type'].sample.to_s
+    @conflict                = json['conflict'].sample.to_s
     govt = @initial_government_type.downcase.split.join("_")
-    @evolution = json['evolution'][govt].sample
+    @evolution = json['evolution'][govt].sample.to_s
     @traits = []
-    [2, 3].sample.times { @traits.push json['trait'].sample }
-    #TODO: Add a government_type attribute based on the evolution (probably need a regex)
+    [2, 3].sample.times { @traits << json['trait'].sample.to_s }
+    # TODO: Add a government_type attribute based on the evolution (probably need a regex)
   end
 
   def to_s
     <<-EOS.unindent
-      Colonization Reason: #{@colonization_reason}
-      Initial Government Type: #{@initial_government_type}
-      Traits: #{@traits.join(", ")}
-      Conflict: #{@conflict}
-      Evolution: #{@evolution}
+      |Colonization Reason: #{@colonization_reason}
+      |Initial Government Type: #{@initial_government_type}
+      |Traits: #{@traits.join(", ")}
+      |Conflict: #{@conflict}
+      |Evolution: #{@evolution}
       EOS
   end
 end
@@ -67,7 +68,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Society.new
   end
 end

@@ -32,27 +32,28 @@ require './unindent'
 # This class generates an heresy from tables/heresy.json, 
 # which has the following attributes:
 #
-# founder
-# major_heresy
-# attitude
-# quirk
+# - founder (string)
+# - major_heresy (string)
+# - attitude (string)
+# - quirk (string)
+#
 class Heresy
   attr_reader :founder, :major_heresy, :attitude, :quirk
 
   def initialize
     json = JSON.parse(File.read('tables/heresy.json'))
-    @founder      = json['founder'].sample
-    @major_heresy = json['major_heresy'].sample
-    @attitude     = json['attitude'].sample
-    @quirk        = json['quirk'].sample
+    @founder      = json['founder'].sample.to_s
+    @major_heresy = json['major_heresy'].sample.to_s
+    @attitude     = json['attitude'].sample.to_s
+    @quirk        = json['quirk'].sample.to_s
   end
 
   def to_s
     <<-EOS.unindent
-      Founder: #{@founder}
-      Major Heresy: #{@major_heresy}
-      Attitude: #{@attitude}
-      Quirk: #{@quirk}
+      |Founder: #{@founder}
+      |Major Heresy: #{@major_heresy}
+      |Attitude: #{@attitude}
+      |Quirk: #{@quirk}
       EOS
   end
 end
@@ -60,7 +61,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Heresy.new
   end
 end

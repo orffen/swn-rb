@@ -32,33 +32,34 @@ require './unindent'
 # This class generates an NPC from tables/npc.json, 
 # which has the following attributes:
 #
-# gender
-# age
-# height
-# problems
-# job_motivation
-# quirk
+# - gender (string)
+# - age (string)
+# - height (string)
+# - problems (string)
+# - job_motivation (string)
+# - quirk (string)
+#
 class NPC
-  attr_reader :founder, :major_npc, :attitude, :quirk
+  attr_reader :gender, :age, :height, :problems, :job_motivation, :quirk
 
   def initialize
     json = JSON.parse(File.read('tables/npc.json'))
-    @gender         = json['gender'].sample
-    @age            = json['age'].sample
-    @height         = json['height'].sample
-    @problems       = json['problems'].sample
-    @job_motivation = json['job_motivation'].sample
-    @quirk          = json['quirk'].sample
+    @gender         = json['gender'].sample.to_s
+    @age            = json['age'].sample.to_s
+    @height         = json['height'].sample.to_s
+    @problems       = json['problems'].sample.to_s
+    @job_motivation = json['job_motivation'].sample.to_s
+    @quirk          = json['quirk'].sample.to_s
   end
 
   def to_s
     <<-EOS.unindent
-      Gender: #{@gender}
-      Age: #{@age}
-      Height: #{@height}
-      Problems: #{@problems}
-      Job motivation: #{@job_motivation}
-      Quirk: #{@quirk}
+      |Gender: #{@gender}
+      |Age: #{@age}
+      |Height: #{@height}
+      |Problems: #{@problems}
+      |Job motivation: #{@job_motivation}
+      |Quirk: #{@quirk}
       EOS
   end
 end
@@ -66,7 +67,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts NPC.new
   end
 end

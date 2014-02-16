@@ -35,7 +35,7 @@ class Adventure
 
   def initialize
     json = JSON.parse(File.read('tables/adventure.json'))
-    @seed = json['seed'].sample
+    @seed = json['seed'].sample.to_s
   end
 
   def to_s
@@ -46,7 +46,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Adventure.new
   end
 end

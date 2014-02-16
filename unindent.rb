@@ -1,5 +1,5 @@
 # unindent.rb
-# Unindents strings (used for HEREDOCs)
+# Unindents HEREDOC strings
 #
 # Copyright (c) 2014 Steve Simenic <orffen@orffenspace.com>
 #
@@ -26,6 +26,6 @@
 
 class String
   def unindent
-    gsub /^\s*/, ''
+    gsub /^\s*\|/, ''
   end
 end

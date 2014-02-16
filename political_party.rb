@@ -32,29 +32,30 @@ require './unindent'
 # This class generates a political party from tables/political_party.json, 
 # which has the following attributes:
 #
-# name
-# leadership
-# economic_policy
-# important_issues
+# - name (string)
+# - leadership (string)
+# - economic_policy (string)
+# - important_issues (string)
+#
 class PoliticalParty
   attr_reader :name, :leadership, :economic_policy, :important_issues
 
   def initialize
     json = JSON.parse(File.read('tables/political_party.json'))
-    @leadership       = json['leadership'].sample
-    @economic_policy  = json['economic_policy'].sample
-    @important_issues = json['important_issues'].sample
+    @leadership       = json['leadership'].sample.to_s
+    @economic_policy  = json['economic_policy'].sample.to_s
+    @important_issues = json['important_issues'].sample.to_s
     #TODO: Change the following so that when (A metal) or (A color)
     # it actually returns a metal or a color
-    @name = "#{json['descriptor'].sample} #{json['name'].sample}"
+    @name = "#{json['descriptor'].sample.to_s} #{json['name'].sample.to_s}"
   end
 
   def to_s
     <<-END.unindent
-      Name: #{@name}
-      Leadership: #{@leadership}
-      Economic Policy: #{@economic_policy}
-      Important Issues: #{@important_issues}
+      |Name: #{@name}
+      |Leadership: #{@leadership}
+      |Economic Policy: #{@economic_policy}
+      |Important Issues: #{@important_issues}
       END
   end
 end
@@ -62,7 +63,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts PoliticalParty.new
   end
 end

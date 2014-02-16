@@ -31,13 +31,13 @@ require './unindent'
 
 # This class generates a faction which has the following attributes:
 #
-# type
-# hit_points
-# force
-# cunning
-# wealth
-# tags
-# assets
+# - type (string)
+# - hit_points (integer)
+# - force (integer)
+# - cunning (integer)
+# - wealth (integer)
+# - tags (array)
+# - assets (array)
 #
 class Faction
   attr_reader :type, :hit_points, :force, :cunning, :wealth, :tags, :assets
@@ -45,46 +45,46 @@ class Faction
   def initialize
     json        = JSON.parse(File.read('tables/faction.json'))
     @type       = ['minor', 'major', 'hegemon'].sample
-    @hit_points = json[@type]['hit_points']
+    @hit_points = json[@type]['hit_points'].to_i
     stats       = json[@type]['stats'].dup
-    @force      = stats.delete stats.sample
-    @cunning    = stats.delete stats.sample
-    @wealth     = stats.delete stats.sample
+    @force      = (stats.delete stats.sample).to_i
+    @cunning    = (stats.delete stats.sample).to_i
+    @wealth     = (stats.delete stats.sample).to_i
 
     @tags = []
-    ([1] * 4 + [2]).sample.times { @tags.push json['tags'].sample }
+    ([1] * 4 + [2]).sample.times { @tags << json['tags'].sample.to_s }
 
     @assets = []
-    # now grab the highest stat value from 'stats'[0] in json
-    bigstat = [@force, @cunning, @wealth].index json[@type]['stats'][0]
+    # now grab the highest stat value from 'stats'.first in json
+    bigstat = [@force, @cunning, @wealth].index json[@type]['stats'].first
     stats   = {
       0 => ['force', @force],
       1 => ['cunning', @cunning],
       2 => ['wealth', @wealth]
     }
-    json[@type]['assets'][0].times do
+    json[@type]['assets'].first.times do
       number = (1..stats[bigstat][1]).to_a.sample.to_s # json stores as string
-      @assets.push "#{(json[stats[bigstat][0]][number]).sample}/" +
-                   "#{stats[bigstat][0].capitalize} #{number}"
+      @assets << "#{(json[stats[bigstat].first][number]).sample}/" +
+                 "#{stats[bigstat].first.capitalize} #{number}"
     end
     json[@type]['assets'][1].times do
       stat = ([0, 1, 2] - [bigstat]).sample # exclude biggest stat
       number = (1..stats[stat][1]).to_a.sample.to_s # json stores as string
-      @assets.push "#{(json[stats[stat][0]][number]).sample}/" +
-                   "#{stats[stat][0].capitalize} #{number}"
+      @assets << "#{(json[stats[stat].first][number]).sample}/" +
+                 "#{stats[stat].first.capitalize} #{number}"
     end
     @type.capitalize! # we're done using it, so format for output
   end
 
   def to_s
     <<-EOS.unindent
-      Type: #{@type}
-      Hit Points: #{@hit_points}
-      Force: #{@force}
-      Cunning: #{@cunning}
-      Wealth: #{@wealth}
-      Tags: #{@tags.join(', ')}
-      Assets: #{@assets.join(', ')}
+      |Type: #{@type}
+      |Hit Points: #{@hit_points}
+      |Force: #{@force}
+      |Cunning: #{@cunning}
+      |Wealth: #{@wealth}
+      |Tags: #{@tags.join(', ')}
+      |Assets: #{@assets.join(', ')}
       EOS
   end
 end
@@ -92,7 +92,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Faction.new
   end
 end

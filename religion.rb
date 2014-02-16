@@ -32,24 +32,25 @@ require './unindent'
 # This class generates a religion from tables/religion.json, 
 # which has the following attributes:
 #
-# evolution
-# leadership
-# origin_tradition
+# - evolution (string)
+# - leadership (string)
+# - origin_tradition (string)
+#
 class Religion
   attr_reader :evolution, :leadership, :origin_tradition
 
   def initialize
     json = JSON.parse(File.read('tables/religion.json'))
-    @evolution        = json['evolution'].sample
-    @leadership       = json['leadership'].sample
-    @origin_tradition = json['origin_tradition'].sample
+    @evolution        = json['evolution'].sample.to_s
+    @leadership       = json['leadership'].sample.to_s
+    @origin_tradition = json['origin_tradition'].sample.to_s
   end
 
   def to_s
     <<-EOS.unindent
-      Evolution: #{@evolution}
-      Leadership: #{@leadership}
-      Origin Tradition: #{@origin_tradition}
+      |Evolution: #{@evolution}
+      |Leadership: #{@leadership}
+      |Origin Tradition: #{@origin_tradition}
       EOS
   end
 end
@@ -57,7 +58,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Religion.new
   end
 end

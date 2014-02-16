@@ -32,24 +32,25 @@ require './unindent'
 # This class generates an corporation from tables/corporation.json,
 # which has the following attributes:
 #
-# name
-# business
-# reputation
+# - name (string)
+# - business (string)
+# - reputation (string)
+#
 class Corporation
   attr_reader :name, :business, :reputation
 
   def initialize
     json = JSON.parse(File.read('tables/corporation.json'))
     @name       = "#{json['name'].sample} #{json['organization'].sample}"
-    @business   = json['business'].sample
-    @reputation = json['reputation'].sample
+    @business   = json['business'].sample.to_s
+    @reputation = json['reputation'].sample.to_s
   end
 
   def to_s
     <<-EOS.unindent
-      Name: #{@name}
-      Business: #{@business}
-      Reputation: #{@reputation}
+      |Name: #{@name}
+      |Business: #{@business}
+      |Reputation: #{@reputation}
       EOS
   end
 end
@@ -57,7 +58,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Corporation.new
   end
 end

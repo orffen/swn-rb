@@ -32,12 +32,12 @@ require './unindent'
 # This class generates a world from tables/world.json, 
 # which has the following attributes:
 #
-# atmosphere
-# temperature
-# biosphere
-# population
-# tech_level
-# tags
+# - atmosphere (string)
+# - temperature (string)
+# - biosphere (string)
+# - population (string)
+# - tech_level (string)
+# - tags (array)
 #
 class World
   attr_reader :atmosphere, :temperature, :biosphere, :population,
@@ -45,23 +45,23 @@ class World
 
   def initialize
     json = JSON.parse(File.read('tables/world.json'))
-    @atmosphere  = json['atmosphere'].sample
-    @temperature = json['temperature'].sample
-    @biosphere   = json['biosphere'].sample
-    @population  = json['population'].sample
-    @tech_level  = json['tech_level'].sample
+    @atmosphere  = json['atmosphere'].sample.to_s
+    @temperature = json['temperature'].sample.to_s
+    @biosphere   = json['biosphere'].sample.to_s
+    @population  = json['population'].sample.to_s
+    @tech_level  = json['tech_level'].sample.to_s
     @tags = []
-    2.times { tags.push json['tags'].sample }
+    2.times { tags << json['tags'].sample.to_s }
   end
 
   def to_s
     <<-EOS.unindent
-      Atmosphere: #{@atmosphere}
-      Temperature: #{@temperature}
-      Biosphere: #{@biosphere}
-      Population: #{@population}
-      Tech Level: #{@tech_level}
-      Tags: #{@tags.join(', ')}
+      |Atmosphere: #{@atmosphere}
+      |Temperature: #{@temperature}
+      |Biosphere: #{@biosphere}
+      |Population: #{@population}
+      |Tech Level: #{@tech_level}
+      |Tags: #{@tags.join(', ')}
       EOS
   end
 end
@@ -69,7 +69,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts World.new
   end
 end

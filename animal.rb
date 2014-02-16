@@ -27,35 +27,33 @@
 #
 
 require 'json'
+require 'set'
 require './unindent'
 
 # This class generates an animal from tables/animal.json, 
 # which has the following attributes:
 #
-# template
-# traits
-# group_size
+# - template (string)
+# - traits (array)
+# - group_size (integer)
+#
 class Animal
   attr_reader :template, :traits, :group_size
 
   def initialize
     json = JSON.parse(File.read('tables/animal.json'))
-    @template   = json['template'].sample
-    @group_size = (1..6).to_a.sample
+    @template   = json['template'].sample.to_s
+    @group_size = (1..6).to_a.sample.to_i
     if @template == 'Hybrid'
       num_templates = [2, 2, 3].sample
-      templates = []
-      while templates.length < num_templates do
-        new_template = json['template'].sample
-        if new_template == 'Hybrid' or templates.include? new_template
-          next
-        else
-          templates.push new_template
-        end
+      templates = Set.new
+      while templates.size < num_templates do
+        new_template = json['template'].sample.to_s
+        templates << new_template unless new_template == 'Hybrid'
       end
       @traits = []
-      templates.each { |e| @traits.push json['trait'][e.downcase].sample }
-      @template = templates.join('/')
+      templates.each { |e| @traits << json['trait'][e.downcase].sample.to_s }
+      @template = templates.to_a.join('/')
     else
       @traits = [json['trait'][@template.downcase].sample] # array
     end
@@ -63,9 +61,9 @@ class Animal
 
   def to_s
     <<-EOS.unindent
-      Template: #{@template}
-      Traits: #{@traits.join(', ')}
-      Group size: #{@group_size}
+      |Template: #{@template}
+      |Traits: #{@traits.join(', ')}
+      |Group size: #{@group_size}
       EOS
   end
 end
@@ -73,7 +71,7 @@ end
 
 if __FILE__ == $0
   (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e == 0
+    puts '-----------+-+-+-----------' unless e.zero?
     puts Animal.new
   end
 end
