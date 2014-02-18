@@ -55,7 +55,7 @@ class Animal
       templates.each { |e| @traits << json['trait'][e.downcase].sample.to_s }
       @template = templates.to_a.join('/')
     else
-      @traits = [json['trait'][@template.downcase].sample] # array
+      @traits = Array(json['trait'][@template.downcase].sample)
     end
   end
 
