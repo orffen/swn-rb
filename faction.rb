@@ -45,14 +45,14 @@ class Faction
   def initialize
     json        = JSON.parse(File.read('tables/faction.json'))
     @type       = ['minor', 'major', 'hegemon'].sample
-    @hit_points = json[@type]['hit_points'].to_i
+    @hit_points = json[@type]['hit_points'].to_int
     stats       = json[@type]['stats'].dup
-    @force      = (stats.delete stats.sample).to_i
-    @cunning    = (stats.delete stats.sample).to_i
-    @wealth     = (stats.delete stats.sample).to_i
+    @force      = (stats.delete stats.sample).to_int
+    @cunning    = (stats.delete stats.sample).to_int
+    @wealth     = (stats.delete stats.sample).to_int
 
     @tags = []
-    ([1] * 4 + [2]).sample.times { @tags << json['tags'].sample.to_s }
+    ([1] * 4 + [2]).sample.times { @tags << json['tags'].sample.to_str }
 
     @assets = []
     # now grab the highest stat value from 'stats'.first in json
@@ -91,7 +91,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Faction.new
   end

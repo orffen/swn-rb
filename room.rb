@@ -35,7 +35,7 @@ class Room
 
   def initialize
     json = JSON.parse(File.read('tables/room.json'))
-    @room = json['room'].sample.to_s
+    @room = json['room'].sample.to_str
   end
 
   def to_s
@@ -45,7 +45,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Room.new
   end

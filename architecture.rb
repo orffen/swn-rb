@@ -35,7 +35,7 @@ class Architecture
 
   def initialize
     json = JSON.parse(File.read('tables/architecture.json'))
-    @element = json['element'].sample.to_s
+    @element = json['element'].sample.to_str
   end
 
   def to_s
@@ -45,7 +45,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Architecture.new
   end

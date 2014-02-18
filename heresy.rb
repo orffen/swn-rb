@@ -42,10 +42,10 @@ class Heresy
 
   def initialize
     json = JSON.parse(File.read('tables/heresy.json'))
-    @founder      = json['founder'].sample.to_s
-    @major_heresy = json['major_heresy'].sample.to_s
-    @attitude     = json['attitude'].sample.to_s
-    @quirk        = json['quirk'].sample.to_s
+    @founder      = json['founder'].sample.to_str
+    @major_heresy = json['major_heresy'].sample.to_str
+    @attitude     = json['attitude'].sample.to_str
+    @quirk        = json['quirk'].sample.to_str
   end
 
   def to_s
@@ -60,7 +60,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Heresy.new
   end

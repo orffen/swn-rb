@@ -41,9 +41,9 @@ class Religion
 
   def initialize
     json = JSON.parse(File.read('tables/religion.json'))
-    @evolution        = json['evolution'].sample.to_s
-    @leadership       = json['leadership'].sample.to_s
-    @origin_tradition = json['origin_tradition'].sample.to_s
+    @evolution        = json['evolution'].sample.to_str
+    @leadership       = json['leadership'].sample.to_str
+    @origin_tradition = json['origin_tradition'].sample.to_str
   end
 
   def to_s
@@ -57,7 +57,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Religion.new
   end

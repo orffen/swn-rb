@@ -41,10 +41,10 @@ class Alien
 
   def initialize
     json = JSON.parse(File.read('tables/alien.json'))
-    @body_type        = json['body_type'].sample.to_s
-    @social_structure = json['social_structure'].sample.to_s
+    @body_type        = json['body_type'].sample.to_str
+    @social_structure = json['social_structure'].sample.to_str
     @lenses           = []
-    [1, 2, 2, 3, 4].sample.times { @lenses.push(json['lens'].sample.to_s) }
+    [1, 2, 2, 3, 4].sample.times { @lenses.push(json['lens'].sample.to_str) }
   end
 
   def to_s
@@ -58,7 +58,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Alien.new
   end

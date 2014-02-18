@@ -42,12 +42,12 @@ class PoliticalParty
 
   def initialize
     json = JSON.parse(File.read('tables/political_party.json'))
-    @leadership       = json['leadership'].sample.to_s
-    @economic_policy  = json['economic_policy'].sample.to_s
-    @important_issues = json['important_issues'].sample.to_s
+    @leadership       = json['leadership'].sample.to_str
+    @economic_policy  = json['economic_policy'].sample.to_str
+    @important_issues = json['important_issues'].sample.to_str
     #TODO: Change the following so that when (A metal) or (A color)
     # it actually returns a metal or a color
-    @name = "#{json['descriptor'].sample.to_s} #{json['name'].sample.to_s}"
+    @name = "#{json['descriptor'].sample} #{json['name'].sample}"
   end
 
   def to_s
@@ -62,7 +62,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts PoliticalParty.new
   end

@@ -45,13 +45,13 @@ class World
 
   def initialize
     json = JSON.parse(File.read('tables/world.json'))
-    @atmosphere  = json['atmosphere'].sample.to_s
-    @temperature = json['temperature'].sample.to_s
-    @biosphere   = json['biosphere'].sample.to_s
-    @population  = json['population'].sample.to_s
-    @tech_level  = json['tech_level'].sample.to_s
+    @atmosphere  = json['atmosphere'].sample.to_str
+    @temperature = json['temperature'].sample.to_str
+    @biosphere   = json['biosphere'].sample.to_str
+    @population  = json['population'].sample.to_str
+    @tech_level  = json['tech_level'].sample.to_str
     @tags = []
-    2.times { tags << json['tags'].sample.to_s }
+    2.times { tags << json['tags'].sample.to_str }
   end
 
   def to_s
@@ -68,7 +68,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts World.new
   end

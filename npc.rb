@@ -44,12 +44,12 @@ class NPC
 
   def initialize
     json = JSON.parse(File.read('tables/npc.json'))
-    @gender         = json['gender'].sample.to_s
-    @age            = json['age'].sample.to_s
-    @height         = json['height'].sample.to_s
-    @problems       = json['problems'].sample.to_s
-    @job_motivation = json['job_motivation'].sample.to_s
-    @quirk          = json['quirk'].sample.to_s
+    @gender         = json['gender'].sample.to_str
+    @age            = json['age'].sample.to_str
+    @height         = json['height'].sample.to_str
+    @problems       = json['problems'].sample.to_str
+    @job_motivation = json['job_motivation'].sample.to_str
+    @quirk          = json['quirk'].sample.to_str
   end
 
   def to_s
@@ -66,7 +66,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts NPC.new
   end

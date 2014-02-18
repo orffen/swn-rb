@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 #
-# animal.rb
-# SWN Animal Generator
+# planet.rb
+# SWN Planet Generator
+# This script generates a complete planet with a world description,
+# society, fauna, aliens (sometimes), a faction or two, a religion,
+# some political parties and NPCs.
 #
 # Copyright (c) 2014 Steve Simenic <orffen@orffenspace.com>
 #
@@ -26,52 +29,62 @@
 # THE SOFTWARE.
 #
 
-require 'json'
-require 'set'
+require './adventure'
+require './alien'
+require './animal'
+require './architecture'
+require './corporation'
+require './faction'
+require './npc'
+require './political_party'
+require './religion'
+require './society'
+require './world'
 require './unindent'
 
-# This class generates an animal from tables/animal.json, 
-# which has the following attributes:
+# This class generates a planet which has the following attributes:
 #
-# - template (string)
-# - traits (array)
-# - group_size (integer)
+# - world (World object)
+# - society (Society object)
+# - architecture (string)
+# - faction (Faction object)
+# - political_parties (array of PoliticalParty objects)
+# - corporations (array of Corporation object)
+# - religions (array of Religion objects)
+# - 
 #
-class Animal
-  attr_reader :template, :traits, :group_size
+class Planet
+  attr_reader :world, :society, :faction, 
 
   def initialize
-    json = JSON.parse(File.read('tables/animal.json'))
-    @template   = json['template'].sample.to_str
-    @group_size = (1..6).to_a.sample.to_int
-    if @template == 'Hybrid'
-      num_templates = [2, 2, 3].sample
-      templates = Set.new
-      while templates.size < num_templates do
-        new_template = json['template'].sample.to_str
-        templates << new_template unless new_template == 'Hybrid'
-      end
-      @traits = []
-      templates.each { |e| @traits << json['trait'][e.downcase].sample.to_str }
-      @template = templates.to_a.join('/')
-    else
-      @traits = Array(json['trait'][@template.downcase].sample)
-    end
+    @world = World.new
+    @society = Society.new
   end
 
   def to_s
     <<-EOS.unindent
-      |Template: #{@template}
-      |Traits: #{@traits.join(', ')}
-      |Group size: #{@group_size}
+      |World:
+      |  #{@world}
+      |Society:
+      |  #{@society}
+      |Predominant Architecture: #{@architecture}
+      |Strongest Faction:
+      |  #{@faction}
+      |Political Parties:
+      |  #{@political_parties}
+      |Corporations:
+      |  #{@corporations}
+      |Religions:
+      |  #{@religions}
+      |
       EOS
   end
 end
 
 
 if __FILE__ == $0
-  Integer(ARGV.shift || 1).times do |e|
+  (ARGV.shift || 1).to_i.times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
-    puts Animal.new
+    puts Adventure.new
   end
 end

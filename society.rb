@@ -44,13 +44,13 @@ class Society
 
   def initialize
     json = JSON.parse(File.read('tables/society.json'))
-    @colonization_reason     = json['colonization_reason'].sample.to_s
-    @initial_government_type = json['government_type'].sample.to_s
-    @conflict                = json['conflict'].sample.to_s
+    @colonization_reason     = json['colonization_reason'].sample.to_str
+    @initial_government_type = json['government_type'].sample.to_str
+    @conflict                = json['conflict'].sample.to_str
     govt = @initial_government_type.downcase.split.join("_")
-    @evolution = json['evolution'][govt].sample.to_s
+    @evolution = json['evolution'][govt].sample.to_str
     @traits = []
-    [2, 3].sample.times { @traits << json['trait'].sample.to_s }
+    [2, 3].sample.times { @traits << json['trait'].sample.to_str }
     # TODO: Add a government_type attribute based on the evolution (probably need a regex)
   end
 
@@ -67,7 +67,7 @@ end
 
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
+  Integer(ARGV.shift || 1).times do |e|
     puts '-----------+-+-+-----------' unless e.zero?
     puts Society.new
   end
