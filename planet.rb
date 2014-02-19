@@ -30,11 +30,11 @@
 #
 
 require './adventure'
-require './alien'
 require './animal'
 require './architecture'
 require './corporation'
 require './faction'
+require './heresy'
 require './npc'
 require './political_party'
 require './religion'
@@ -42,49 +42,27 @@ require './society'
 require './world'
 require './unindent'
 
-# This class generates a planet which has the following attributes:
-#
-# - world (World object)
-# - society (Society object)
-# - architecture (string)
-# - faction (Faction object)
-# - political_parties (array of PoliticalParty objects)
-# - corporations (array of Corporation object)
-# - religions (array of Religion objects)
-# - 
-#
-class Planet
-  attr_reader :world, :society, :faction, 
-
-  def initialize
-    @world = World.new
-    @society = Society.new
-  end
-
-  def to_s
-    <<-EOS.unindent
-      |World:
-      |  #{@world}
-      |Society:
-      |  #{@society}
-      |Predominant Architecture: #{@architecture}
-      |Strongest Faction:
-      |  #{@faction}
-      |Political Parties:
-      |  #{@political_parties}
-      |Corporations:
-      |  #{@corporations}
-      |Religions:
-      |  #{@religions}
-      |
-      EOS
-  end
-end
-
 
 if __FILE__ == $0
-  (ARGV.shift || 1).to_i.times do |e|
-    puts '-----------+-+-+-----------' unless e.zero?
-    puts Adventure.new
-  end
+  puts World.new
+  puts "Predominant architectural feature: #{Architecture.new}"
+  puts Society.new
+  puts "---"
+  [2, 3].sample.times { puts "Animal:\n#{Animal.new}\n" }
+  puts "---"
+  [2, 3].sample.times { puts "Political Party:\n#{PoliticalParty.new}\n" }
+  puts "---"
+  [2, 3].sample.times { puts "Corporation:\n#{Corporation.new}\n" }
+  puts "---"
+  [1, 2].sample.times {
+    puts ["Religion:\n#{Religion.new}\n", "Heresy:\n#{Heresy.new}\n"].sample
+  }
+  puts "---"
+  puts "Local Faction:\n#{Faction.new}"
+  puts "---"
+  puts "Prominent NPCs:"
+  [3, 4, 5].sample.times { puts "-\n#{NPC.new}" }
+  puts "---"
+  puts "Adventure Seeds:"
+  3.times { puts Adventure.new }
 end
