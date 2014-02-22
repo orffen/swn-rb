@@ -36,7 +36,8 @@ For example: "ruby alien.rb 3" will generate 3 alien races.
 
 ## Extending the SWN Toolbox
 
-The scripts use the tables in the subdirectory, which are simple JSON files.
+The scripts use the tables in the subdirectory, which are simple
+[YAML](http://www.yaml.org) files.
 
 You can edit them to add more entries to be randomly-selected by the scripts.
 
