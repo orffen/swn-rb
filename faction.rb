@@ -26,8 +26,8 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
 # This class generates a faction which has the following attributes:
 #
@@ -43,34 +43,34 @@ class Faction
   attr_reader :type, :hit_points, :force, :cunning, :wealth, :tags, :assets
 
   def initialize
-    json        = JSON.parse(File.read('tables/faction.json'))
+    yaml        = YAML.load(File.read('tables/faction.yaml'))
     @type       = ['minor', 'major', 'hegemon'].sample
-    @hit_points = json[@type]['hit_points'].to_int
-    stats       = json[@type]['stats'].dup
+    @hit_points = yaml[@type]['hit_points'].to_int
+    stats       = yaml[@type]['stats'].dup
     @force      = (stats.delete stats.sample).to_int
     @cunning    = (stats.delete stats.sample).to_int
     @wealth     = (stats.delete stats.sample).to_int
 
     @tags = []
-    ([1] * 4 + [2]).sample.times { @tags << json['tags'].sample.to_str }
+    ([1] * 4 + [2]).sample.times { @tags << yaml['tags'].sample.to_str }
 
     @assets = []
-    # now grab the highest stat value from 'stats'.first in json
-    bigstat = [@force, @cunning, @wealth].index json[@type]['stats'].first
+    # now grab the highest stat value from 'stats'.first in yaml
+    bigstat = [@force, @cunning, @wealth].index yaml[@type]['stats'].first
     stats   = {
       0 => ['force', @force],
       1 => ['cunning', @cunning],
       2 => ['wealth', @wealth]
     }
-    json[@type]['assets'].first.times do
-      number = (1..stats[bigstat][1]).to_a.sample.to_s # json stores as string
-      @assets << "#{(json[stats[bigstat].first][number]).sample}/" +
+    yaml[@type]['assets'].first.times do
+      number = (1..stats[bigstat][1]).to_a.sample.to_s # yaml stores as string
+      @assets << "#{(yaml[stats[bigstat].first][number]).sample}/" +
                  "#{stats[bigstat].first.capitalize} #{number}"
     end
-    json[@type]['assets'][1].times do
+    yaml[@type]['assets'][1].times do
       stat = ([0, 1, 2] - [bigstat]).sample # exclude biggest stat
-      number = (1..stats[stat][1]).to_a.sample.to_s # json stores as string
-      @assets << "#{(json[stats[stat].first][number]).sample}/" +
+      number = (1..stats[stat][1]).to_a.sample.to_s # yaml stores as string
+      @assets << "#{(yaml[stats[stat].first][number]).sample}/" +
                  "#{stats[stat].first.capitalize} #{number}"
     end
     @type.capitalize! # we're done using it, so format for output

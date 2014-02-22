@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates a political party from tables/political_party.json, 
+# This class generates a political party from tables/political_party.yaml, 
 # which has the following attributes:
 #
 # - name (string)
@@ -41,13 +41,13 @@ class PoliticalParty
   attr_reader :name, :leadership, :economic_policy, :important_issues
 
   def initialize
-    json = JSON.parse(File.read('tables/political_party.json'))
-    @leadership       = json['leadership'].sample.to_str
-    @economic_policy  = json['economic_policy'].sample.to_str
-    @important_issues = json['important_issues'].sample.to_str
+    yaml = YAML.load(File.read('tables/political_party.yaml'))
+    @leadership       = yaml['leadership'].sample.to_str
+    @economic_policy  = yaml['economic_policy'].sample.to_str
+    @important_issues = yaml['important_issues'].sample.to_str
     #TODO: Change the following so that when (A metal) or (A color)
     # it actually returns a metal or a color
-    @name = "#{json['descriptor'].sample} #{json['name'].sample}"
+    @name = "#{yaml['descriptor'].sample} #{yaml['name'].sample}"
   end
 
   def to_s

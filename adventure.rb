@@ -26,16 +26,16 @@
 # THE SOFTWARE.
 #
 
-require 'json'
+require 'yaml'
 
-# This class generates an adventure seed from tables/adventure.json, 
+# This class generates an adventure seed from tables/adventure.yaml, 
 # which can be accessed through the seed attribute.
 class Adventure
   attr_reader :seed
 
   def initialize
-    json = JSON.parse(File.read('tables/adventure.json'))
-    @seed = json['seed'].sample.to_str
+    yaml = YAML.load(File.read('tables/adventure.yaml'))
+    @seed = yaml['seed'].sample.to_str
   end
 
   def to_s

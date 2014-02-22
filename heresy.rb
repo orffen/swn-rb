@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates an heresy from tables/heresy.json, 
+# This class generates an heresy from tables/heresy.yaml, 
 # which has the following attributes:
 #
 # - founder (string)
@@ -41,11 +41,11 @@ class Heresy
   attr_reader :founder, :major_heresy, :attitude, :quirk
 
   def initialize
-    json = JSON.parse(File.read('tables/heresy.json'))
-    @founder      = json['founder'].sample.to_str
-    @major_heresy = json['major_heresy'].sample.to_str
-    @attitude     = json['attitude'].sample.to_str
-    @quirk        = json['quirk'].sample.to_str
+    yaml = YAML.load(File.read('tables/heresy.yaml'))
+    @founder      = yaml['founder'].sample.to_str
+    @major_heresy = yaml['major_heresy'].sample.to_str
+    @attitude     = yaml['attitude'].sample.to_str
+    @quirk        = yaml['quirk'].sample.to_str
   end
 
   def to_s

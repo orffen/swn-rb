@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates an NPC from tables/npc.json, 
+# This class generates an NPC from tables/npc.yaml, 
 # which has the following attributes:
 #
 # - gender (string)
@@ -43,13 +43,13 @@ class NPC
   attr_reader :gender, :age, :height, :problems, :job_motivation, :quirk
 
   def initialize
-    json = JSON.parse(File.read('tables/npc.json'))
-    @gender         = json['gender'].sample.to_str
-    @age            = json['age'].sample.to_str
-    @height         = json['height'].sample.to_str
-    @problems       = json['problems'].sample.to_str
-    @job_motivation = json['job_motivation'].sample.to_str
-    @quirk          = json['quirk'].sample.to_str
+    yaml = YAML.load(File.read('tables/npc.yaml'))
+    @gender         = yaml['gender'].sample.to_str
+    @age            = yaml['age'].sample.to_str
+    @height         = yaml['height'].sample.to_str
+    @problems       = yaml['problems'].sample.to_str
+    @job_motivation = yaml['job_motivation'].sample.to_str
+    @quirk          = yaml['quirk'].sample.to_str
   end
 
   def to_s

@@ -26,16 +26,16 @@
 # THE SOFTWARE.
 #
 
-require 'json'
+require 'yaml'
 
-# This class generates a room from tables/room.json, 
+# This class generates a room from tables/room.yaml, 
 # which can be accessed through the room attribute.
 class Room
   attr_reader :room
 
   def initialize
-    json = JSON.parse(File.read('tables/room.json'))
-    @room = json['room'].sample.to_str
+    yaml = YAML.load(File.read('tables/room.yaml'))
+    @room = yaml['room'].sample.to_str
   end
 
   def to_s

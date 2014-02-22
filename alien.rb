@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates an alien race from tables/alien.json, 
+# This class generates an alien race from tables/alien.yaml, 
 # which has the following attributes:
 #
 # - body_type (string)
@@ -40,11 +40,11 @@ class Alien
   attr_reader :body_type, :social_structure, :lenses
 
   def initialize
-    json = JSON.parse(File.read('tables/alien.json'))
-    @body_type        = json['body_type'].sample.to_str
-    @social_structure = json['social_structure'].sample.to_str
+    yaml = YAML.load(File.read('tables/alien.yaml'))
+    @body_type        = yaml['body_type'].sample.to_str
+    @social_structure = yaml['social_structure'].sample.to_str
     @lenses           = []
-    [1, 2, 2, 3, 4].sample.times { @lenses.push(json['lens'].sample.to_str) }
+    [1, 2, 2, 3, 4].sample.times { @lenses.push(yaml['lens'].sample.to_str) }
   end
 
   def to_s

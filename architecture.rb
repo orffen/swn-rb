@@ -26,16 +26,16 @@
 # THE SOFTWARE.
 #
 
-require 'json'
+require 'yaml'
 
-# This class generates an architecture element from tables/architecture.json,
+# This class generates an architecture element from tables/architecture.yaml,
 # which can be accessed through the element attribute.
 class Architecture
   attr_reader :element
 
   def initialize
-    json = JSON.parse(File.read('tables/architecture.json'))
-    @element = json['element'].sample.to_str
+    yaml = YAML.load(File.read('tables/architecture.yaml'))
+    @element = yaml['element'].sample.to_str
   end
 
   def to_s

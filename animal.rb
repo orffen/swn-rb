@@ -26,11 +26,11 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require 'set'
 require './unindent'
+require 'yaml'
 
-# This class generates an animal from tables/animal.json, 
+# This class generates an animal from tables/animal.yaml, 
 # which has the following attributes:
 #
 # - template (string)
@@ -41,21 +41,21 @@ class Animal
   attr_reader :template, :traits, :group_size
 
   def initialize
-    json = JSON.parse(File.read('tables/animal.json'))
-    @template   = json['template'].sample.to_str
+    yaml = YAML.load(File.read('tables/animal.yaml'))
+    @template   = yaml['template'].sample.to_str
     @group_size = (1..6).to_a.sample.to_int
     if @template == 'Hybrid'
       num_templates = [2, 2, 3].sample
       templates = Set.new
       while templates.size < num_templates do
-        new_template = json['template'].sample.to_str
+        new_template = yaml['template'].sample.to_str
         templates << new_template unless new_template == 'Hybrid'
       end
       @traits = []
-      templates.each { |e| @traits << json['trait'][e.downcase].sample.to_str }
+      templates.each { |e| @traits << yaml['trait'][e.downcase].sample.to_str }
       @template = templates.to_a.join('/')
     else
-      @traits = Array(json['trait'][@template.downcase].sample)
+      @traits = Array(yaml['trait'][@template.downcase].sample)
     end
   end
 

@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates an corporation from tables/corporation.json,
+# This class generates an corporation from tables/corporation.yaml,
 # which has the following attributes:
 #
 # - name (string)
@@ -40,10 +40,10 @@ class Corporation
   attr_reader :name, :business, :reputation
 
   def initialize
-    json = JSON.parse(File.read('tables/corporation.json'))
-    @name       = "#{json['name'].sample} #{json['organization'].sample}"
-    @business   = json['business'].sample.to_str
-    @reputation = json['reputation'].sample.to_str
+    yaml = YAML.load(File.read('tables/corporation.yaml'))
+    @name       = "#{yaml['name'].sample} #{yaml['organization'].sample}"
+    @business   = yaml['business'].sample.to_str
+    @reputation = yaml['reputation'].sample.to_str
   end
 
   def to_s

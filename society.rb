@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates a society from tables/society.json, 
+# This class generates a society from tables/society.yaml, 
 # which has the following attributes:
 #
 # - colonization_reason (string)
@@ -43,14 +43,14 @@ class Society
     :conflict, :evolution
 
   def initialize
-    json = JSON.parse(File.read('tables/society.json'))
-    @colonization_reason     = json['colonization_reason'].sample.to_str
-    @initial_government_type = json['government_type'].sample.to_str
-    @conflict                = json['conflict'].sample.to_str
+    yaml = YAML.load(File.read('tables/society.yaml'))
+    @colonization_reason     = yaml['colonization_reason'].sample.to_str
+    @initial_government_type = yaml['government_type'].sample.to_str
+    @conflict                = yaml['conflict'].sample.to_str
     govt = @initial_government_type.downcase.split.join("_")
-    @evolution = json['evolution'][govt].sample.to_str
+    @evolution = yaml['evolution'][govt].sample.to_str
     @traits = []
-    [2, 3].sample.times { @traits << json['trait'].sample.to_str }
+    [2, 3].sample.times { @traits << yaml['trait'].sample.to_str }
     # TODO: Add a government_type attribute based on the evolution (probably need a regex)
   end
 

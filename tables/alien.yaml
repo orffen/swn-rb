@@ -1,0 +1,36 @@
+---
+body_type:
+- Humanlike
+- Avian
+- Reptilian
+- Insectile
+- Exotic
+- Hybrid
+lens:
+- Collectivity
+- Curiosity
+- Despair
+- Domination
+- Faith
+- Fear
+- Gluttony
+- Greed
+- Hate
+- Honor
+- Journeying
+- Joy
+- Pacifism
+- Pride
+- Sagacity
+- Subtlety
+- Tradition
+- Treachery
+- Tribalism
+- Wrath
+social_structure:
+- Democratic
+- Monarchic
+- Tribal
+- Oligarchic
+- Multipolar
+- Multipolar

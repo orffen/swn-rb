@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates a world from tables/world.json, 
+# This class generates a world from tables/world.yaml, 
 # which has the following attributes:
 #
 # - atmosphere (string)
@@ -44,14 +44,14 @@ class World
     :tech_level, :tags
 
   def initialize
-    json = JSON.parse(File.read('tables/world.json'))
-    @atmosphere  = json['atmosphere'].sample.to_str
-    @temperature = json['temperature'].sample.to_str
-    @biosphere   = json['biosphere'].sample.to_str
-    @population  = json['population'].sample.to_str
-    @tech_level  = json['tech_level'].sample.to_str
+    yaml = YAML.load(File.read('tables/world.yaml'))
+    @atmosphere  = yaml['atmosphere'].sample.to_str
+    @temperature = yaml['temperature'].sample.to_str
+    @biosphere   = yaml['biosphere'].sample.to_str
+    @population  = yaml['population'].sample.to_str
+    @tech_level  = yaml['tech_level'].sample.to_str
     @tags = []
-    2.times { tags << json['tags'].sample.to_str }
+    2.times { tags << yaml['tags'].sample.to_str }
   end
 
   def to_s

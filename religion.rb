@@ -26,10 +26,10 @@
 # THE SOFTWARE.
 #
 
-require 'json'
 require './unindent'
+require 'yaml'
 
-# This class generates a religion from tables/religion.json, 
+# This class generates a religion from tables/religion.yaml, 
 # which has the following attributes:
 #
 # - evolution (string)
@@ -40,10 +40,10 @@ class Religion
   attr_reader :evolution, :leadership, :origin_tradition
 
   def initialize
-    json = JSON.parse(File.read('tables/religion.json'))
-    @evolution        = json['evolution'].sample.to_str
-    @leadership       = json['leadership'].sample.to_str
-    @origin_tradition = json['origin_tradition'].sample.to_str
+    yaml = YAML.load(File.read('tables/religion.yaml'))
+    @evolution        = yaml['evolution'].sample.to_str
+    @leadership       = yaml['leadership'].sample.to_str
+    @origin_tradition = yaml['origin_tradition'].sample.to_str
   end
 
   def to_s
