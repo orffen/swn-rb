@@ -63,13 +63,13 @@ class Faction
       2 => ['wealth', @wealth]
     }
     yaml[@type]['assets'].first.times do
-      number = (1..stats[bigstat][1]).to_a.sample.to_s # yaml stores as string
+      number = (1..stats[bigstat][1]).to_a.sample
       @assets << "#{(yaml[stats[bigstat].first][number]).sample}/" +
                  "#{stats[bigstat].first.capitalize} #{number}"
     end
     yaml[@type]['assets'][1].times do
       stat = ([0, 1, 2] - [bigstat]).sample # exclude biggest stat
-      number = (1..stats[stat][1]).to_a.sample.to_s # yaml stores as string
+      number = (1..stats[stat][1]).to_a.sample
       @assets << "#{(yaml[stats[stat].first][number]).sample}/" +
                  "#{stats[stat].first.capitalize} #{number}"
     end

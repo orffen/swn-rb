@@ -48,101 +48,101 @@ tags:
 - Theocratic
 - Warlike
 force:
-  '1':
+  1:
   - Security Personnel
   - Hitmen
   - Militia Unit
-  '2':
+  2:
   - Heavy Drop Assets
   - Elite Skirmishers
   - Hardened Personnel
   - Guerilla Populace
-  '3':
+  3:
   - Zealots
   - Cunning Trap
   - Counterintel Unit
-  '4':
+  4:
   - Beachhead Landers
   - Extended Theater
   - Strike Fleet
   - Postech Infantry
-  '5':
+  5:
   - Blockade Fleet
   - Pretech Logistics
   - Psychic Assassins
-  '6':
+  6:
   - Pretech Infantry
   - Planetary Defenses
   - Gravtank Formation
-  '7':
+  7:
   - Deep Strike Landers
   - Integral Protocols
   - Space Marines
-  '8':
+  8:
   - Capital Fleet
 cunning:
-  '1':
+  1:
   - Smugglers
   - Informers
   - False Front
-  '2':
+  2:
   - Lobbyists
   - Saboteurs
   - Blackmail
   - Seductress
-  '3':
+  3:
   - Cyberninjas
   - Stealth
   - Covert Shipping
-  '4':
+  4:
   - Party Machine
   - Vanguard Cadres
   - Tripwire Cells
   - Seditionists
-  '5':
+  5:
   - Organization Moles
   - Cracked Comms
   - Boltholes
-  '6':
+  6:
   - Transport Lockdown
   - Covert Transit Net
   - Demagogue
-  '7':
+  7:
   - Popular Movement
   - Book of Secrets
   - Treachery
-  '8':
+  8:
   - Panopticon Matrix
 wealth:
-  '1':
+  1:
   - Franchise
   - Harvesters
   - Local Investments
-  '2':
+  2:
   - Freighter Contract
   - Lawyers
   - Union Toughs
   - Surveyors
-  '3':
+  3:
   - Postech Industry
   - Laboratory
   - Mercenaries
-  '4':
+  4:
   - Shipping Combine
   - Monopoly
   - Medical Center
   - Bank
-  '5':
+  5:
   - Marketers
   - Pretech Researchers
   - Blockade Runners
-  '6':
+  6:
   - Venture Capital
   - R&D Department
   - Commodities Broker
-  '7':
+  7:
   - Pretech Manufactory
   - Hostile Takeover
   - Transit Web
-  '8':
+  8:
   - Scavenger Fleet
