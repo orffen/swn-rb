@@ -45,8 +45,6 @@ class PoliticalParty
     @leadership       = yaml['leadership'].sample.to_str
     @economic_policy  = yaml['economic_policy'].sample.to_str
     @important_issues = yaml['important_issues'].sample.to_str
-    #TODO: Change the following so that when (A metal) or (A color)
-    # it actually returns a metal or a color
     @name = "#{yaml['descriptor'].sample} #{yaml['name'].sample}"
   end
 
