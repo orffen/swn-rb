@@ -100,7 +100,7 @@ if __FILE__ == $0
     puts ''unless e.zero?
     puts '----------------------+-+-+----------------------'
     puts Corporation.new
-    5.times do puts NPC_Name.new end
+    5.times do puts NPC_Name.new({}) end
     puts '----------------------+-+-+----------------------'
   end
 end

@@ -1,10 +1,82 @@
 ---
 Male:
-# swn core - english male
-- placeholder # Not in book
+# swn core - russian male
+- Aleksandr
+- Andrei
+- Arkady
+- Boris
+- Dmitri
+- Dominik
+- Grigory
+- Igor
+- Ilya
+- Ivan
+- Kiril
+- Konstantin
+- Leonid
+- Nikolai
+- Oleg
+- Pavel
+- Petr
+- Sergei
+- Stepan
+- Valentin
+- Vasily
+- Viktor
+- Yakov
+- Yegor
+- Yuri
 Female:
-# swn core - english female
-- placeholder # Not in book
+# swn core - russian female
+- Aleksandra
+- Anastasia
+- Anja
+- Catarina
+- Devora
+- Dima
+- Ekaterina
+- Eva
+- Irina
+- Karolina
+- Katlina
+- Kira
+- Lubmilla
+- Mara
+- Nadezdha
+- Nastassia
+- Natalya
+- Oksana
+- Olena
+- Olga
+- Sofia
+- Svetlana
+- Tatyana
+- Vilma
+- Yelena
 last_name:
-# swn core - english surname
-- placeholder # Not in book
+# swn core - russian surname
+- Abelev
+- Bobrikov
+- Chemerkin
+- Gogunov
+- Gurov
+- Iltchenko
+- Kavelin
+- Komarov
+- Korovin
+- Kurnikov
+- Lebedev
+- Litvak
+- Mekhdiev
+- Muraviov
+- Nikitin
+- Ortov
+- Peshkov
+- Romasko
+- Shvedov
+- Sikorski
+- Stolypin
+- Turov
+- Volokh
+- Zaitsev
+- Zhukov

@@ -1,10 +1,99 @@
 ---
 Male:
-# swn core - english male
-- placeholder # Not in book
+# swn core - japanese male
+- Akira
+- Akihiro # Not in book
+- Daiki # Not in book
+- Daisuke
+- Fukashi
+- Goro
+- Hiro
+- Hiroya
+- Hotaka
+- Ichiro # Not in book
+- Isamu # Not in book
+- Jun # Not in book
+- Katsu
+- Katsuto
+- Keishuu
+- Kyuuto
+- Mikiya
+- Mitsunobu
+- Mitsuru
+- Narukhiko
+- Nobu
+- Osamu # Not in book
+- Satoru # Not in book
+- Shigeo
+- Shigeto
+- Shou
+- Shuji
+- Takaharu
+- Takumi # Not in book
+- Teruaki
+- Tetsushi
+- Toshiaki # Not in book
+- Tsukasa
+- Yasuharu
+- Yoshihiro # Not in book
 Female:
-# swn core - english female
-- placeholder # Not in book
+# swn core - japanese female
+- Aemi
+- Airi
+- Akane # Not in book
+- Ako
+- Asuka # Not in book
+- Ayu
+- Chikaze
+- Eriko
+- Fumiko # Not in book
+- Hina
+- Kaori
+- Katsumi # Not in book
+- Keiko
+- Kyouka
+- Mayumi
+- Miho
+- Namiko
+- Natsu
+- Nobuko
+- Rei
+- Ririsa
+- Takako # Not in book
+- Tsukiko # Not in book
+- Sakimi
+- Shihoko
+- Shika
+- Tsukiko
+- Tsuzune
+- Yoriko
+- Yorimi
+- Yoshiko
 last_name:
-# swn core - english surname
-- placeholder # Not in book
+# swn core - japanese surname
+- Abe
+- Arakaki
+- Endo
+- Fujiwara
+- Goto
+- Ito
+- Kikuchi
+- Kinjo
+- Kobayashi
+- Koga
+- Komatsu
+- Maeda
+- Nakamura
+- Narita
+- Ochi
+- Okada # Not in book
+- Oshiro
+- Saito
+- Sakamoto
+- Sato
+- Suzuki
+- Takashi
+- Tanaka
+- Watanabe
+- Yamamoto
+- Yamasaki

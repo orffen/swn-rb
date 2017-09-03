@@ -1,10 +1,82 @@
 ---
 Male:
-# swn core - english male
-- placeholder # Not in book
+# swn core - nigerian male
+- Adesegun
+- Akintola
+- Amabere
+- Arikawe
+- Asagwara
+- Chidubem
+- Chinedu
+- Chiwetei
+- Damilola
+- Esangbedo
+- Ezenwoye
+- Folarin
+- Genechi
+- Idowu
+- Kelechi
+- Ketanndu
+- Melubari
+- Nkanta
+- Obafemi
+- Olatunde
+- Olumide
+- Tombari
+- Udofia
+- Uyoata
+- Uzochi
 Female:
-# swn core - english female
-- placeholder # Not in book
+# swn core - nigerian female
+- Abike
+- Adesuwa
+- Adunola
+- Anguli
+- Arewa
+- Asari
+- Bisola
+- Chioma
+- Eduwa
+- Emilohi
+- Fehintola
+- Folasade
+- Mahparah
+- Minika
+- Nkolika
+- Nkoyo
+- Nuanae
+- Obioma
+- Olafemi
+- Shanumi
+- Sominabo
+- Suliat
+- Tariere
+- Temedire
+- Yemisi
 last_name:
-# swn core - english surname
-- placeholder # Not in book
+# swn core - nigerian surname
+- Adegboye
+- Adeniyi
+- Adeyeku
+- Adunola
+- Agbaje
+- Akpan
+- Akpehi
+- Aliki
+- Asuni
+- Babangida
+- Ekim
+- Ezeiruaku
+- Fabiola
+- Fasola
+- Nwokolo
+- Nzeocha
+- Ojo
+- Okonkwo
+- Okoye
+- Olaniyan
+- Olawale
+- Olumese
+- Onajobi
+- Soyinka
+- Yamusa
