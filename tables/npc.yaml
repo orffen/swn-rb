@@ -6,6 +6,9 @@ age:
 - Young
 - Middle-aged
 - Old
+culture:
+- Arabic
+- Chinese
 height:
 - Very Short
 - Short
