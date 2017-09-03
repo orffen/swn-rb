@@ -44,16 +44,20 @@ class NPC
 
   def initialize
     yaml = YAML.load(File.read('tables/npc.yaml'))
+    names = YAML.load(File.read('tables/npc_names.yaml'))
     @gender         = yaml['gender'].sample.to_str
     @age            = yaml['age'].sample.to_str
     @height         = yaml['height'].sample.to_str
     @problems       = yaml['problems'].sample.to_str
     @job_motivation = yaml['job_motivation'].sample.to_str
     @quirk          = yaml['quirk'].sample.to_str
+    @first_name     = names['first_name'].sample.to_str
+    @last_name      = names['last_name'].sample.to_str
   end
 
   def to_s
     <<-EOS.unindent
+      |Name: #{@first_name} #{@last_name}
       |Gender: #{@gender}
       |Age: #{@age}
       |Height: #{@height}
