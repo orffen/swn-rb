@@ -1,5 +1,4 @@
-#!/usr/bin/env ruby
-#
+ 
 # corporation.rb
 # SWN Corporation Generator
 #
@@ -28,6 +27,7 @@
 
 require './unindent'
 require 'yaml'
+require './npc_name.rb'
 
 # This class generates an corporation from tables/corporation.yaml,
 # which has the following attributes:
@@ -42,23 +42,65 @@ class Corporation
   def initialize
     yaml = YAML.load(File.read('tables/corporation.yaml'))
     @name       = "#{yaml['name'].sample} #{yaml['organization'].sample}"
-    @business   = yaml['business'].sample.to_str
+    @business   = yaml['business'].sample.to_str + 
+      ', ' + yaml['business'].sample.to_str
     @reputation = yaml['reputation'].sample.to_str
+
+    # Ceo
+    npc = YAML.load(File.read('tables/npc.yaml'))
+    @culture    = npc['culture'].sample.to_str
+    @gender     = npc['gender'].sample.to_str
+    names = YAML.load(File.read('tables/npc_names/'+@culture+'.yaml'))
+    @ceo        = names[@gender].sample.to_str + ' ' +
+      names['last_name'].sample.to_str
+
+    # Subsidiaries
+    @sub1 = Subsidiary.new.to_s
+    @sub2 = Subsidiary.new.to_s
+    @sub3 = Subsidiary.new.to_s
+
   end
 
   def to_s
     <<-EOS.unindent
-      |Name: #{@name}
-      |Business: #{@business}
-      |Reputation: #{@reputation}
+      |Name:        #{@name}
+      |Business:    #{@business}
+      |CE0:         #{@ceo}
+      |-----Reputation----------------------------------
+      |#{@reputation}
+      |-----Subsidiaries--------------------------------
+      | #{@sub1}
+      | #{@sub2}
+      | #{@sub3}
+      |-----Staff---------------------------------------
       EOS
   end
 end
 
+class Subsidiary
+  def initialize
+    yaml = YAML.load(File.read('tables/corporation.yaml'))
+    @name = "#{yaml['name'].sample} #{yaml['organization'].sample}"
+  end
+
+  def to_s
+    <<-EOS.unindent
+    |  #{@name}
+    EOS
+  end
+
+
+end
+
+
+
 
 if __FILE__ == $0
   Integer(ARGV.shift || 1).times do |e|
-    puts '-----------+-+-+-----------' unless e.zero?
+    puts ''unless e.zero?
+    puts '----------------------+-+-+----------------------'
     puts Corporation.new
+    5.times do puts NPC_Name.new end
+    puts '----------------------+-+-+----------------------'
   end
 end

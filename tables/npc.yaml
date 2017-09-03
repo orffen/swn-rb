@@ -2,13 +2,13 @@
 gender:
 - Male
 - Female
+culture:
+- Arabic
+- Chinese
 age:
 - Young
 - Middle-aged
 - Old
-culture:
-- Arabic
-- Chinese
 height:
 - Very Short
 - Short
