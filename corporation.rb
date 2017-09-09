@@ -54,26 +54,24 @@ class Corporation
     @ceo        = names[@gender].sample.to_str + ' ' +
       names['last_name'].sample.to_str
 
-    # Subsidiaries
-    @sub1 = Subsidiary.new.to_s
-    @sub2 = Subsidiary.new.to_s
-    @sub3 = Subsidiary.new.to_s
-
   end
 
   def to_s
-    <<-EOS.unindent
-      |Name:        #{@name}
-      |Business:    #{@business}
-      |CE0:         #{@ceo}
-      |-----Reputation----------------------------------
-      |#{@reputation}
-      |-----Subsidiaries--------------------------------
-      | #{@sub1}
-      | #{@sub2}
-      | #{@sub3}
-      |-----Staff---------------------------------------
-      EOS
+    
+    string=<<-EOS.unindent
+    |Name:        #{@name}
+    |Business:    #{@business}
+    |CEO:         #{@ceo}
+    |-----Reputation----------------------------------
+    |#{@reputation}
+    |-----Subsidiaries--------------------------------
+    EOS
+    [2,3].sample.times {string = string+"#{Subsidiary.new}"} 
+    string = string + <<-EOS.unindent
+    |-----Staff---------------------------------------
+    EOS
+    [4,5].sample.times {string = string + "#{NPC_Name.new({})}"} 
+    return string
   end
 end
 
@@ -100,7 +98,6 @@ if __FILE__ == $0
     puts ''unless e.zero?
     puts '----------------------+-+-+----------------------'
     puts Corporation.new
-    5.times do puts NPC_Name.new({}) end
     puts '----------------------+-+-+----------------------'
   end
 end
