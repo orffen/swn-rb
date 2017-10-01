@@ -1,0 +1,102 @@
+---
+Male:
+# swn core - spanish male
+- Alejandro
+- Alonso
+- Amelio
+- Angel # Not in book
+- Armando
+- Bernado
+- Carlos
+- Cesar
+- Diego
+- Emilio
+- Estevan
+- Felipe
+- Francisco
+- Gabriel # Not in book
+- Guillermo
+- Javier
+- Jose
+- Juan
+- Julio
+- Lucas # Not in book
+- Luis
+- Matias # Not in book
+- Nicolas # Not in book
+- Pedro
+- Raul
+- Ricardo
+- Salvador
+- Santiago # Not in book
+- Sebastian # Not in book
+- Tomas # Not in book
+- Valeriano
+- Vicente
+Female:
+# swn core - spanish female
+- Adalina
+- Aleta
+- Adalina
+- Ascencion
+- Beatriz
+- Carmela
+- Celia
+- Daniela # Not in book
+- Dolores
+- Elena
+- Emelina
+- Felipa
+- Gabriela # Not in book
+- Inez
+- Isabel
+- Jacinta
+- Lucia
+- Lupe
+- Maria
+- Marta
+- Nina
+- Paloma
+- Rafaela
+- Sara # Not in book
+- Sofia # Not in book
+- Soledad
+- Teresa
+- Valencia
+- Valentina # Not in book
+- Zenaida
+last_name:
+# swn core - spanish surname
+- Arellano
+- Arispana
+- Borrego
+- Carderas
+- Carranzo
+- Cordova
+- Enciso
+- Espejo
+- Fernandez # Not in book
+- Garcia # Not in book
+- Gavilan
+- Gomez # Not in book
+- Guerra
+- Guillen
+- Huertas
+- Illan
+- Jurado
+- Lopez # Not in book
+- Martinez # Not in book
+- Moretta
+- Motolinia
+- Pancorbo
+- Paredes
+- Perez # Not in book
+- Quesada
+- Rodriguez # Not in book
+- Roma
+- Rubierra
+- Sanchez # Not in book
+- Santoro
+- Torrillas
+- Vera
+- Vivero

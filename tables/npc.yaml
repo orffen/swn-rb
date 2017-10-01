@@ -2,6 +2,15 @@
 gender:
 - Male
 - Female
+culture:
+- Arabic
+- Chinese
+- English
+- Indian
+- Japanese
+- Nigerian
+- Russian
+- Spanish
 age:
 - Young
 - Middle-aged

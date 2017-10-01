@@ -1,0 +1,84 @@
+---
+Male:
+# swn core - indian male
+- Amrit
+- Ashok
+- Chand
+- Dinesh
+- Gobind
+- Harinder
+- Hemant  # Not in book
+- Jagdish
+- Johar
+- Kurien
+- Lakshman
+- Madhav
+- Mahinder
+- Mohal
+- Narinder
+- Nikhil
+- Omrao
+- Prasad
+- Pratap
+- Ranjit
+- Sanjay
+- Shankar
+- Thakur
+- Vijay
+- Vipul
+- Yash
+Female:
+# swn core - indian female
+- Amala
+- Asha
+- Chandra
+- Devika
+- Esha
+- Gita
+- Indira
+- Indrani
+- Jaya
+- Jayanti
+- Kiri
+- Lalita
+- Malati
+- Mira
+- Mohana
+- Neela
+- Nita
+- Rajani
+- Sarala
+- Sarika
+- Sheela
+- Sunita
+- Thrishna
+- Usha
+- Vasanta
+last_name:
+# swn core - indian surname
+- Archari
+- Banerjee
+- Bhatnagar
+- Bose
+- Chauhan
+- Chopra
+- Chudasama  # Not in book
+- Das
+- Dutta
+- Gupta
+- Johar
+- Kapoor
+- Mahajan
+- Malhotra
+- Mehra
+- Nehru
+- Patil
+- Rao
+- Saxena
+- Sharma
+- Singh
+- Trivedi
+- Venkatesan
+- Verma
+- Yadav
+...

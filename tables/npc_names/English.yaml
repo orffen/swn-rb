@@ -1,0 +1,86 @@
+---
+Male:
+# swn core - english male
+- Adam
+- Albert
+- Allan
+- Archibald
+- Arthur
+- Basil
+- Charles
+- Colin
+- David # Not in book
+- Donald
+- Douglas
+- Edgar
+- Edmund
+- Edward
+- George
+- Harold
+- Henry
+- Ian
+- James
+- John
+- Lewis
+- Oliver
+- Philip
+- Richard
+- Robert # Not in book
+- William
+Female:
+# swn core - english female
+- Abigail
+- Anne
+- Beatrice
+- Blanche
+- Catherine
+- Charlotte
+- Claire
+- Eleanor
+- Elizabeth
+- Emily
+- Emma
+- Georgia
+- Harriet
+- Joan
+- Judy
+- Julia
+- Kate # Not in book
+- Lucy
+- Lydia
+- Margaret
+- Martha # Not in book
+- Mary
+- Molly
+- Nora
+- Rosie
+- Sarah
+- Victoria
+last_name:
+# swn core - english surname
+- Barker
+- Brown
+- Butler
+- Carter
+- Chapman
+- Collins
+- Cook
+- Davies
+- Gray
+- Green
+- Harris
+- Jackson
+- Jones
+- Lloyd
+- Miller
+- Roberts
+- Smith
+- Taylor
+- Thomas
+- Thompson # Not in book
+- Turner
+- Watson
+- White
+- Williams
+- Wood
+- Young

@@ -1,0 +1,82 @@
+---
+Male:
+# swn core - chinese male
+- Aigou
+- Bohai
+- Chao
+- Dai
+- Dawei
+- Duyi
+- Fa
+- Fu
+- Gui
+- Hong
+- Jianya
+- Kang
+- Li
+- Niu
+- Peng
+- Quan
+- Ru
+- Shen
+- Shi
+- Song
+- Tao
+- Xue
+- Yi
+- Yuan
+- Zian
+Female:
+# swn core - chinese female
+- Biyu
+- Changying
+- Daiyu
+- Huidai
+- Huiliang
+- Jia
+- Jingfei
+- Lan
+- Liling
+- Liu
+- Meili
+- Niu
+- Peizhi
+- Qiao
+- Qing
+- Ruolan
+- Shu
+- Suyin
+- Ting
+- Xia
+- Xiaowen
+- Xiulan
+- Ya
+- Ying
+- Zhilan
+last_name:
+# swn core - chinese surname
+- Bai
+- Cao
+- Chen
+- Cui
+- Ding
+- Du
+- Fang
+- Fu
+- Guo
+- Han
+- Hao
+- Huang
+- Lei
+- Li
+- Liang
+- Liu
+- Long
+- Song
+- Tan
+- Tang
+- Wang
+- Wu
+- Xing
+- Yang
+- Zhang

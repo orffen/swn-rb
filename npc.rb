@@ -34,27 +34,41 @@ require 'yaml'
 #
 # - gender (string)
 # - age (string)
+# - culture (string)
 # - height (string)
 # - problems (string)
 # - job_motivation (string)
 # - quirk (string)
+# This class generates a name for the NPC from tables/npc_names/***.yaml
+# where *** is the determined culture. It has the following attributes
+# - Male (string)
+# - Female (string)
+# - last_name (string)
 #
 class NPC
-  attr_reader :gender, :age, :height, :problems, :job_motivation, :quirk
+  attr_reader :gender, :age, :culture, :height, :problems, :job_motivation, :quirk, 
+    :first_name, :last_name
 
   def initialize
     yaml = YAML.load(File.read('tables/npc.yaml'))
     @gender         = yaml['gender'].sample.to_str
     @age            = yaml['age'].sample.to_str
+    @culture        = yaml['culture'].sample.to_str
     @height         = yaml['height'].sample.to_str
     @problems       = yaml['problems'].sample.to_str
     @job_motivation = yaml['job_motivation'].sample.to_str
     @quirk          = yaml['quirk'].sample.to_str
+
+    names = YAML.load(File.read('tables/npc_names/'+@culture+'.yaml'))
+    @first_name     = names[@gender].sample.to_str
+    @last_name      = names['last_name'].sample.to_str
   end
 
   def to_s
     <<-EOS.unindent
+      |Name: #{@first_name} #{@last_name}
       |Gender: #{@gender}
+      |Culture: #{@culture}
       |Age: #{@age}
       |Height: #{@height}
       |Problems: #{@problems}
